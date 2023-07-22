@@ -49,5 +49,10 @@ namespace Enemy
                 _agent.SetDestination(_nextRandomPoint);
             }
         }
+
+        public void ChangeMoveParticleSystem()
+        {
+            _particleSystem.startColor = GetComponent<MeshRenderer>().material.color;
+        }
     }
 }

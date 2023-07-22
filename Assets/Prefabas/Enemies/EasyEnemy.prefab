@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6630994737018359955}
   - component: {fileID: 7205859682452247571}
   - component: {fileID: 2143324322286352241}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: EasyEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!195 &6630994737018359955
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -152,6 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e36f5098b69a7a449bd4ab9d6b4aa81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnLowHealthState:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2143324322286352241}
+        m_TargetAssemblyTypeName: Enemy.EnemyMovement, Assembly-CSharp
+        m_MethodName: ChangeMoveParticleSystem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
   _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
   _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}
   _maxHealth: 100
@@ -182,8 +198,8 @@ GameObject:
   - component: {fileID: 7245839702131439788}
   - component: {fileID: 3794758657010764400}
   - component: {fileID: 596829905747539486}
-  m_Layer: 0
-  m_Name: Particle System
+  m_Layer: 3
+  m_Name: MoveParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

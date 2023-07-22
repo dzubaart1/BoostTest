@@ -1,3 +1,4 @@
+using Boosts;
 using Enemy;
 using UnityEngine;
 
@@ -10,17 +11,17 @@ namespace Bullet
         private const float MAX_LIFE_TIME = 10f;
     
         private float _currentLifeTime;
-    
-        public float GetDamage()
-        {
-            return _damageAmount;
-        }
-    
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.GetComponent<EnemyHealth>() is not null)
             {
                 collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(_damageAmount);    
+            }
+
+            if (collision.gameObject.GetComponent<IBoost>() is not null)
+            {
+                collision.gameObject.GetComponent<IBoost>().Activate();
             }
             Destroy(gameObject);
         }

@@ -2,34 +2,6 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "UI",
-            "id": "1d6b7529-e4f0-4383-8caf-4a2fe068c72e",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "ed283778-c934-4b4d-b5dd-497db83ce78d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "bf0e6e16-2a92-44cc-9d4d-3a7cbdc1e999",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "MouseKeyboard",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
             "name": "Player",
             "id": "ec115503-7f3b-4a78-bfab-26296edbdd37",
             "actions": [
