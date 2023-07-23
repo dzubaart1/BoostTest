@@ -1,15 +1,34 @@
+using Bullet;
+using Globals;
 using UnityEngine;
 
-public class PlayerFire : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private GameObject _bulletsHolder;
-
-    public void Fire()
+    public class PlayerFire : MonoBehaviour
     {
-        var bullet = Instantiate(_bulletPrefab, Camera.main.transform.position, Quaternion.identity, _bulletsHolder.transform);
+        [SerializeField] private BulletCntrl _bulletPrefab;
+        [SerializeField] private GameObject _bulletsHolder;
+        [SerializeField] private float _stepDamageAmountOnUpgrade;
+        [SerializeField] private float _startDamageAmount;
+    
+        private float _currentDamageAmount;
+        private void Start()
+        {
+            _currentDamageAmount = _startDamageAmount;
+            BoostEventManager.Instance().OnUpgradeGunBoostActivate.AddListener(Upgrade);
+        }
 
-        bullet.GetComponent<Rigidbody>().velocity =
-            Quaternion.AngleAxis(Random.Range(-3f, 3f), Vector3.up) * Camera.main.transform.forward * 40;
+        public void Fire()
+        {
+            var bullet = Instantiate(_bulletPrefab, Camera.main.transform.position, Quaternion.identity, _bulletsHolder.transform);
+            bullet.SetDamage(_currentDamageAmount);
+            bullet.GetComponent<Rigidbody>().velocity =
+                Quaternion.AngleAxis(Random.Range(-3f, 3f), Vector3.up) * Camera.main.transform.forward * 40;
+        }
+    
+        private void Upgrade()
+        {
+            _currentDamageAmount += _stepDamageAmountOnUpgrade;
+        }
     }
 }

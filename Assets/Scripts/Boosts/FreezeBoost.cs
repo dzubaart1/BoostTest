@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Boosts
 {
-    public class FreezeBoost : MonoBehaviour, IBoost
+    public class FreezeBoost : BaseBoost
     {
         [SerializeField] private float _freezeSeconds;
         
-        public void Activate()
+        public override void Activate()
         {
             BoostEventManager.Instance().SendFreezeBoostActivateSignal(_freezeSeconds);
             Destroy(gameObject);

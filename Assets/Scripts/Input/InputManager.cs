@@ -1,4 +1,4 @@
-using System;
+using Globals;
 using Player;
 using UnityEngine;
 
@@ -14,6 +14,11 @@ public class InputManager : MonoBehaviour
     {
         _playerInput = new PlayerInput();
         _playerActions = _playerInput.Player;
+    }
+
+    private void Start()
+    {
+        GameplayEventManager.Instance().OnEndGame.AddListener(() => enabled = false);
     }
 
     private void Update()

@@ -4,9 +4,10 @@ namespace Globals
 {
     public class GameplayEventManager
     {
-        public UnityEvent OnUpdateUIStatistics = new();
-        public UnityEvent<int> OnChangeEnemyCount = new();
         public UnityEvent<int> OnUpdateScoreCount = new();
+        public UnityEvent OnSpawnEnemy = new();
+        public UnityEvent OnDieEnemy = new();
+        public UnityEvent OnUpgradeLevel = new();
         public UnityEvent OnEndGame = new();
         public UnityEvent OnStartGame = new();
 
@@ -24,17 +25,21 @@ namespace Globals
         {
             OnEndGame.Invoke();
         }
-        public void SendChangeEnemyCountSignal(int count)
+        public void SendSpawnEnemySignal()
         {
-            OnChangeEnemyCount.Invoke(count);
+            OnSpawnEnemy.Invoke();
+        }
+        public void SendDieEnemySignal()
+        {
+            OnDieEnemy.Invoke();
         }
         public void SendUpdateScoreCountSignal(int score)
         {
             OnUpdateScoreCount.Invoke(score);
         }
-        public void SendUpdateUIStatisticsSignal()
+        public void SendUpgradeLevelSignal()
         {
-            OnUpdateUIStatistics.Invoke();
+            OnUpgradeLevel.Invoke();
         }
     }
 }

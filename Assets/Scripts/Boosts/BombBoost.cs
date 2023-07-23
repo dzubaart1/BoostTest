@@ -1,11 +1,10 @@
 ﻿using Globals;
-using UnityEngine;
 
 namespace Boosts
 {
-    public class BombBoost : MonoBehaviour, IBoost
+    public class BombBoost : BaseBoost
     {
-        public void Activate()
+        public override void Activate()
         {
             BoostEventManager.Instance().SendBombBoostActivateSignal();
             Destroy(gameObject);

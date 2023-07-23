@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4417551928954157506}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FreezeBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,8 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5242303368071782992}
   - component: {fileID: 2956343783595744849}
-  - component: {fileID: 2561151186358662574}
-  - component: {fileID: 401288793657780799}
+  - component: {fileID: 6989087201718886607}
+  - component: {fileID: 999143020798144304}
   m_Layer: 6
   m_Name: Boost
   m_TagString: Untagged
@@ -254,7 +254,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2561151186358662574
+--- !u!114 &6989087201718886607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _freezeSeconds: 3
---- !u!135 &401288793657780799
+--- !u!135 &999143020798144304
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

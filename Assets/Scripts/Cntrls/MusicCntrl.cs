@@ -10,6 +10,7 @@ namespace Cntrls
         private void Start()
         {
             Settings.Instance().OnChangeAudioVolumeSettings.AddListener(ChangeAudioVolume);
+            ChangeAudioVolume(Settings.Instance().GetAudioVolume());
         }
 
         private void ChangeAudioVolume(float volume)

@@ -1,4 +1,5 @@
 using System;
+using Globals;
 using UnityEngine;
 
 namespace Player

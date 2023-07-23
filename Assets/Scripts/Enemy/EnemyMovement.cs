@@ -8,16 +8,14 @@ namespace Enemy
     {
         [SerializeField] private float _randomPointRadius;
         [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private ParticleSystem _particleSystem;
-    
+        
         private Vector3 _nextRandomPoint;
         private NavMeshPath _navMeshPath;
-    
 
         private void Start()
         {
             _navMeshPath = new NavMeshPath();
-            _particleSystem.startColor = GetComponent<MeshRenderer>().material.color;
+
         }
 
         private void Update()
@@ -48,11 +46,6 @@ namespace Enemy
 
                 _agent.SetDestination(_nextRandomPoint);
             }
-        }
-
-        public void ChangeMoveParticleSystem()
-        {
-            _particleSystem.startColor = GetComponent<MeshRenderer>().material.color;
         }
     }
 }

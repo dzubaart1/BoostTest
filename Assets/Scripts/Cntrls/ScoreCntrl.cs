@@ -1,21 +1,36 @@
 using Globals;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cntrls
 {
     public class ScoreCntrl : MonoBehaviour
     {
+        [SerializeField] private Text _scoreText;
+        [SerializeField] private int _gapOfScoreToUpgrade;
+
+        private int _nextScoreToUpgrade;
         public int CurrentScore { get; private set; }
 
         private void Start()
         {
-            GameplayEventManager.Instance().OnUpdateScoreCount.AddListener(UpdateScoreCount);
+            _nextScoreToUpgrade = _gapOfScoreToUpgrade;
+            CurrentScore = 0;
+            GameplayEventManager.Instance().OnUpdateScoreCount.AddListener(Upgrade);
         }
         
-        private void UpdateScoreCount(int score)
+        private void Upgrade(int score)
         {
             CurrentScore += score;
-            GameplayEventManager.Instance().SendUpdateUIStatisticsSignal();
-        }
+            if (_scoreText)
+            {
+                _scoreText.text = CurrentScore.ToString();
+            }
+            if (CurrentScore >= _nextScoreToUpgrade)
+            {
+                _nextScoreToUpgrade += _gapOfScoreToUpgrade;
+                GameplayEventManager.Instance().SendUpgradeLevelSignal();
+            }
+        } 
     }
 }

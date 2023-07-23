@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 1328255175172134617}
   - component: {fileID: 6729165012973491718}
   - component: {fileID: 6630994737018359955}
-  - component: {fileID: 7205859682452247571}
-  - component: {fileID: 2143324322286352241}
+  - component: {fileID: 5300399325559364800}
+  - component: {fileID: 2146180263125642767}
+  - component: {fileID: 7615941847781160104}
+  - component: {fileID: 7845136053085243502}
   m_Layer: 3
   m_Name: EasyEnemy
   m_TagString: Untagged
@@ -140,39 +142,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7205859682452247571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5292710620575345253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e36f5098b69a7a449bd4ab9d6b4aa81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnLowHealthState:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2143324322286352241}
-        m_TargetAssemblyTypeName: Enemy.EnemyMovement, Assembly-CSharp
-        m_MethodName: ChangeMoveParticleSystem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
-  _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
-  _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}
-  _maxHealth: 100
-  _deathScore: 10
---- !u!114 &2143324322286352241
+--- !u!114 &5300399325559364800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,9 +154,149 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7641f8f4a86a5048ace654eb29099de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomPointRadius: 12.04
+  _randomPointRadius: 12
   _agent: {fileID: 6630994737018359955}
-  _particleSystem: {fileID: 3794758657010764400}
+--- !u!114 &2146180263125642767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292710620575345253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267a3f06d2744890982ac9bb7d1606fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyRank: 0
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7615941847781160104}
+        m_TargetAssemblyTypeName: Enemy.EnemyVisual, Assembly-CSharp
+        m_MethodName: OnTakeDamageVisual
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7615941847781160104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292710620575345253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8f1fc5e6da48fe9508037496720dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 0}
+  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
+  _onMoveParticleSystem: {fileID: 3794758657010764400}
+  _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
+  _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}
+--- !u!82 &7845136053085243502
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292710620575345253}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8862195428657961304
 GameObject:
   m_ObjectHideFlags: 0

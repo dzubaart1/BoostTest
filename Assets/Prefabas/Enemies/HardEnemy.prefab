@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5947657408923243572}
   - component: {fileID: 3403661622685202213}
   m_Layer: 3
-  m_Name: Particle System
+  m_Name: MoveParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.10980389, g: 0.20759955, b: 0.8666667, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4826,8 +4826,9 @@ GameObject:
   - component: {fileID: 4075794403024219693}
   - component: {fileID: 238232056957730338}
   - component: {fileID: 1166873326108081398}
-  - component: {fileID: 7333356262934302814}
   - component: {fileID: 5417895215273346082}
+  - component: {fileID: 530419322447296513}
+  - component: {fileID: 4831348617099333550}
   m_Layer: 3
   m_Name: HardEnemy
   m_TagString: Untagged
@@ -4952,38 +4953,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7333356262934302814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6432498730418155515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e36f5098b69a7a449bd4ab9d6b4aa81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnLowHealthState:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5417895215273346082}
-        m_TargetAssemblyTypeName: Enemy.EnemyMovement, Assembly-CSharp
-        m_MethodName: ChangeMoveParticleSystem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
-  _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
-  _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}
-  _maxHealth: 300
-  _deathScore: 30
 --- !u!114 &5417895215273346082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4996,6 +4965,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7641f8f4a86a5048ace654eb29099de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomPointRadius: 12.04
+  _randomPointRadius: 12
   _agent: {fileID: 1166873326108081398}
-  _particleSystem: {fileID: 5947657408923243572}
+--- !u!114 &530419322447296513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432498730418155515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267a3f06d2744890982ac9bb7d1606fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyRank: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4831348617099333550}
+        m_TargetAssemblyTypeName: Enemy.EnemyVisual, Assembly-CSharp
+        m_MethodName: OnTakeDamageVisual
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4831348617099333550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432498730418155515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8f1fc5e6da48fe9508037496720dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
+  _onMoveParticleSystem: {fileID: 5947657408923243572}
+  _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
+  _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}

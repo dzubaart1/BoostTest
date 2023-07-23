@@ -4,6 +4,7 @@ namespace Globals
 {
     public class BoostEventManager
     {
+        public UnityEvent OnUpgradeGunBoostActivate = new();
         public UnityEvent OnBombBoostActivate = new();
         public UnityEvent<float> OnFreezeBoostActivate = new();
         
@@ -17,10 +18,14 @@ namespace Globals
         {
             OnBombBoostActivate.Invoke();
         }
-
         public void SendFreezeBoostActivateSignal(float seconds)
         {
             OnFreezeBoostActivate.Invoke(seconds);
+        }
+
+        public void SendUpgradeGunBoostActivateSignal()
+        {
+            OnUpgradeGunBoostActivate.Invoke();
         }
     }
 }

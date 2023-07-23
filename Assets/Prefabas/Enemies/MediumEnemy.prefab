@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 4454866446041141253}
   - component: {fileID: 4454866446041141254}
   - component: {fileID: 4454866446041141255}
-  - component: {fileID: 4454866446041141248}
   - component: {fileID: 4454866446041141249}
+  - component: {fileID: 3327161745658282332}
+  - component: {fileID: 6951548579755441984}
   m_Layer: 3
   m_Name: MediumEnemy
   m_TagString: Untagged
@@ -140,38 +141,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4454866446041141248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4454866446041141256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e36f5098b69a7a449bd4ab9d6b4aa81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnLowHealthState:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4454866446041141249}
-        m_TargetAssemblyTypeName: Enemy.EnemyMovement, Assembly-CSharp
-        m_MethodName: ChangeMoveParticleSystem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
-  _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
-  _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}
-  _maxHealth: 200
-  _deathScore: 20
 --- !u!114 &4454866446041141249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,9 +153,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7641f8f4a86a5048ace654eb29099de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomPointRadius: 12.04
+  _randomPointRadius: 12
   _agent: {fileID: 4454866446041141255}
-  _particleSystem: {fileID: 4454866446213819461}
+--- !u!114 &3327161745658282332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454866446041141256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267a3f06d2744890982ac9bb7d1606fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyRank: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6951548579755441984}
+        m_TargetAssemblyTypeName: Enemy.EnemyVisual, Assembly-CSharp
+        m_MethodName: OnTakeDamageVisual
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6951548579755441984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454866446041141256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8f1fc5e6da48fe9508037496720dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onDieParticleSystem: {fileID: 5565266239518566771, guid: 9623cb481d9b7004b8577ac6d2c680b8, type: 3}
+  _onMoveParticleSystem: {fileID: 4454866446213819461}
+  _damageMaterial: {fileID: 2100000, guid: 9896624fe29d6c74a913941fec3b19f9, type: 2}
+  _lowHealthMaterial: {fileID: 2100000, guid: c54194b818061ff4ab8e776242f65864, type: 2}
 --- !u!1 &4454866446213819462
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +211,7 @@ GameObject:
   - component: {fileID: 4454866446213819461}
   - component: {fileID: 4454866446213819460}
   m_Layer: 3
-  m_Name: Particle System
+  m_Name: MoveParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
